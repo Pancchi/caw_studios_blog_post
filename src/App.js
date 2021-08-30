@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route ,Link} from 'react-router-dom';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import BlogPosts from "./BlogPosts/BlogPosts";
+import singleBlog from "./BlogPosts/singleBlog";
+ class App extends Component {
+  render() {
+    return (
+      <div>
+           <Router>
+        
+					<Switch>
+						<Route path="/blogPost" component={singleBlog} />
+            <Route exact={true} path="/" component={BlogPosts} />
+            <Route path="/BlogPosts" component={BlogPosts} />
+					
+						
+					</Switch>
+				</Router>
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({
+	
+})
+
+const mapDispatchToProps = dispatch => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
